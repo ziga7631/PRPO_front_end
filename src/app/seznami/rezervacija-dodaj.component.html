@@ -1,0 +1,22 @@
+<h2>Dodaj rezervacijo</h2>
+<div *ngIf="rezervacijaDTO">
+    <form (ngSubmit)="submitForm()" ngNativeValidate>
+        <table>
+            <tr>
+                <td><label for="id">ID postaje</label></td>
+                <td><input type="number" [(ngModel)]="rezervacijaDTO.postaja_id" id="id" name="id" required /></td>
+            </tr>
+            <tr>
+                <td><label for="od">Rezervirano od:</label></td>
+                <td><input type="datetime-local" [(ngModel)]="rezervacijaDTO.zacetekRezervacije" id="od" name="od" /></td>
+            </tr>
+            <tr>
+                <td><label for="do">do:</label></td>
+                <td><input type="datetime-local" [(ngModel)]="rezervacijaDTO.konecRezervacije" id="do" name="do" /></td>
+            </tr>
+        </table>
+        <br/>
+        <button type="button" (click)="nazaj()">Nazaj</button>
+        <button type="submit">Dodaj</button>
+    </form>
+</div>

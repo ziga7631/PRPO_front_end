@@ -3,13 +3,13 @@ import {RouterModule, Routes} from '@angular/router';
 
 import {SeznamiComponent} from './seznami/seznami.component';
 import {SeznamPodrobnostiComponent} from './seznami/seznam-podrobnosti.component';
-import { ArtikelDodajComponent } from './seznami/artikel-dodaj.component';
+import {RezervacijaDodajComponent } from './seznami/rezervacija-dodaj.component';
 
 const routes: Routes = [
-    {path: '', redirectTo: '/seznami', pathMatch: 'full'},
-    {path: 'seznami', component: SeznamiComponent},
-    {path: 'seznami/:id', component: SeznamPodrobnostiComponent},
-    {path: 'seznami/:id/dodaj', component: ArtikelDodajComponent}
+    {path: '', redirectTo: '/uporabniki', pathMatch: 'full'},
+    {path: 'uporabniki', component: SeznamiComponent},
+    {path: 'uporabniki/:id', component: SeznamPodrobnostiComponent},
+    {path: 'uporabniki/:id/dodaj', component: RezervacijaDodajComponent}
 ];
 
 @NgModule({

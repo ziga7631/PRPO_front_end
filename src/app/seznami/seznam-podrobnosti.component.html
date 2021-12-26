@@ -1,15 +1,16 @@
-<div *ngIf="seznam">
-
-    <h3>{{seznam.naziv}}</h3>
-
-    <p>{{seznam.opis}}</p>
-    <p>Ustvarjen: {{seznam.ustvarjen | date: 'dd. MM. yyyy'}}</p>
-
-    <ul *ngFor="let artikel of seznam.artikli" class="artikli">
-        <li><b>{{artikel.naziv}}</b> <span *ngIf="artikel.opis"> &#8211; {{artikel.opis}}</span></li>
-    </ul>
-
-    <br>
-    <button (click)="dodajArtikel()">Dodaj artikel</button>
+<h3>Uporabnikovi podatki</h3>
+<p>{{uporabnik.ime}}{{uporabnik.priimek}}</p>
+<p>{{uporabnik.email}}</p>
+<p>{{uporabnik.uporabniskoIme}}</p>
+<div>
+    <h3>REZERVACIJE UPORABNIKA</h3>
+    <span *ngFor="let rezervacija of seznamRezervacij">
+        <p>Ime: {{rezervacija.postaja.ime}}</p>
+        <p>Lokacija: {{rezervacija.postaja.lokacija}}</p>
+        <p>Cena: {{rezervacija.postaja.cena}}</p>
+        <p>Rezervirano od {{rezervacija.zacetekRezervacije}} do {{rezervacija.konecRezervacije}}</p>
+        <br>
+    </span>
+    <button (click)="dodajRezervacijo()">Dodaj rezervacijo</button>
     <button (click)="nazaj()">Nazaj</button>
 </div>

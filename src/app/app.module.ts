@@ -7,7 +7,7 @@ import {AppRoutingModule} from './app-routing.module';
 
 import {AppComponent} from './app.component';
 import {SeznamiComponent} from './seznami/seznami.component';
-import {ArtikelDodajComponent} from './seznami/artikel-dodaj.component';
+import {RezervacijaDodajComponent} from './seznami/rezervacija-dodaj.component';
 import {SeznamPodrobnostiComponent} from './seznami/seznam-podrobnosti.component';
 import {SeznamiService} from './seznami/services/seznami.service';
 
@@ -23,7 +23,7 @@ import {SeznamiService} from './seznami/services/seznami.service';
         AppComponent,
         SeznamiComponent,
         SeznamPodrobnostiComponent,
-        ArtikelDodajComponent
+        RezervacijaDodajComponent
     ],
     providers: [SeznamiService],
     bootstrap: [AppComponent]

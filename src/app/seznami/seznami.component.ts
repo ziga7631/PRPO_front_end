@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 
-import { NakupovalniSeznam } from './models/seznam';
+import { Uporabnik } from './models/uporabnik';
 import { SeznamiService } from './services/seznami.service';
 
 @Component({
@@ -10,32 +10,33 @@ import { SeznamiService } from './services/seznami.service';
     templateUrl: 'seznami.component.html'
 })
 export class SeznamiComponent implements OnInit {
-    seznami: NakupovalniSeznam[];
-    seznam: NakupovalniSeznam;
+
+    uporabniki: Uporabnik[];
+    uporabnik: Uporabnik;
 
     constructor(private seznamiService: SeznamiService,
                 private router: Router) {
     }
 
     ngOnInit(): void {
-        this.getSeznami();
+        this.getUporabniki();
     }
 
-    getSeznami(): void {
+    getUporabniki(): void {
         this.seznamiService
-            .getSeznami()
-            .subscribe(seznami => this.seznami = seznami);
+            .getUporabniki()
+            .subscribe(uporabniki => this.uporabniki = uporabniki);
     }
 
-    naPodrobnosti(seznam: NakupovalniSeznam): void {
-        this.seznam = seznam;
-        this.router.navigate(['/seznami', this.seznam.id]);
+    naPodrobnosti(uporabnik: Uporabnik): void {
+        this.uporabnik = uporabnik;
+        this.router.navigate(['/uporabniki', this.uporabnik.id]);
     }
 
-    delete(seznam: NakupovalniSeznam): void {
+    delete(uporabnik: Uporabnik): void {
         this.seznamiService
-            .delete(seznam.id)
-            .subscribe(seznamId => this.seznami = this.seznami.filter(s => s.id !== seznamId));
+            .delete(uporabnik.id)
+            .subscribe(uporabnikId => this.uporabniki = this.uporabniki.filter(up => up.id !== uporabnik.id));
     }
 
 }

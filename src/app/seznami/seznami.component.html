@@ -1,10 +1,9 @@
-<h2>Nakupovalni seznami</h2>
-
+<h2>Seznam uporabnikov</h2>
 <ul class="seznami">
-    <li *ngFor="let seznam of seznami" (click)="naPodrobnosti(seznam)">
-        <span>{{seznam.naziv}}</span>
+    <li *ngFor="let uporabnik of uporabniki" (click)="naPodrobnosti(uporabnik)">
+        <span>{{uporabnik.ime}} {{uporabnik.priimek}} </span>
         <button class="delete"
-                (click)="delete(seznam); $event.stopPropagation()">x
+                (click)="delete(uporabnik); $event.stopPropagation()">x
         </button>
     </li>
 </ul>

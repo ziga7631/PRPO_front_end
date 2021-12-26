@@ -1,29 +1,35 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
-
-import { NakupovalniSeznam } from '../models/seznam';
 import { Observable } from 'rxjs';
-
 import { catchError } from 'rxjs/operators';
-import { Artikel } from '../models/artikel';
+import { Uporabnik } from '../models/uporabnik';
+import { Rezervacija } from '../models/rezervacija';
+import { RezervacijaDTO } from '../models/rezervacijaDTO';
 
 @Injectable()
 export class SeznamiService {
 
     private headers = new HttpHeaders({'Content-Type': 'application/json'});
-    private url = 'http://localhost:8080/v1/seznami';
+    private url = 'http://localhost:8080/v1/uporabniki';
+    private urlRezervacije = 'http://localhost:8080/v1/rezervacije';
 
     constructor(private http: HttpClient) {
     }
 
-    getSeznami(): Observable<NakupovalniSeznam[]> {
-        return this.http.get<NakupovalniSeznam[]>(this.url)
+    getUporabniki(): Observable<Uporabnik[]> {
+        return this.http.get<Uporabnik[]>(this.url)
                         .pipe(catchError(this.handleError));
     }
 
-    getSeznam(id: number): Observable<NakupovalniSeznam> {
+    getUporabnik(id: number): Observable<Uporabnik> {
         const url = `${this.url}/${id}`;
-        return this.http.get<NakupovalniSeznam>(url)
+        console.log(url);
+        return this.http.get<Uporabnik>(url)
+                        .pipe(catchError(this.handleError));
+    }
+
+    getSeznamRezervacij(): Observable<Rezervacija[]> {
+        return this.http.get<Rezervacija[]>(this.urlRezervacije)
                         .pipe(catchError(this.handleError));
     }
 
@@ -33,8 +39,9 @@ export class SeznamiService {
                         .pipe(catchError(this.handleError));
     }
 
-    create(seznamId: number, artikel: Artikel): Observable<Artikel> {
-        return this.http.post<Artikel>(this.url + '/' + seznamId + '/artikli', JSON.stringify(artikel), {headers: this.headers})
+    create(rezervacija: RezervacijaDTO): Observable<Rezervacija> {
+
+        return this.http.post<RezervacijaDTO>(this.urlRezervacije, JSON.stringify(rezervacija), {headers: this.headers})
                         .pipe(catchError(this.handleError));
     }
 
